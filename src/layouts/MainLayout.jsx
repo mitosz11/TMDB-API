@@ -5,7 +5,7 @@ export default function MainLayout() {
   return (
     <>
       <Header />
-      <main className="bg-gray-300">
+      <main className="h-screen bg-gray-300">
       <Outlet/>
       </main>
     </>

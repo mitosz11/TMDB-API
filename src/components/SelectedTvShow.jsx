@@ -15,7 +15,7 @@ export default function SelectedTvShow({ tvShow }) {
         />
         <div className="w-2/3 flex flex-col">
           <p className="text-lg text-gray-700">{tvShow.overview}</p>
-          <div className="mt-5 bg-gray-100 p-4 rounded-lg shadow-md">
+          <div className="mt-5 bg-gray-400 p-4 rounded-lg shadow-md">
             <table className="w-full">
               <tbody>
                 <tr className="border-b">
