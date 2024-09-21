@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCalendarAlt, FaLanguage, FaStar } from "react-icons/fa";
 
 export default function SelectedTvShow({ tvShow }) {
   return (
@@ -14,26 +15,51 @@ export default function SelectedTvShow({ tvShow }) {
         />
         <div className="w-2/3 flex flex-col">
           <p className="text-lg text-gray-700">{tvShow.overview}</p>
-          <ul className="mt-5 space-y-2 bg-gray-100 p-4 rounded-lg shadow-md">
-            <li className="text-gray-800">
-              <strong>Type:</strong> {tvShow.type}
-            </li>
-            <li className="text-gray-800">
-              <strong>First Air Date:</strong> {tvShow.first_air_date}
-            </li>
-            <li className="text-gray-800">
-              <strong>Last Air Date:</strong> {tvShow.last_air_date}
-            </li>
-            <li className="text-gray-800">
-              <strong>Original Language:</strong> {tvShow.original_language}
-            </li>
-            <li className="text-gray-800">
-              <strong>Popularity:</strong> {tvShow.popularity}
-            </li>
-            <li className="text-gray-800">
-              <strong>Vote:</strong> {tvShow.vote_average}
-            </li>
-          </ul>
+          <div className="mt-5 bg-gray-100 p-4 rounded-lg shadow-md">
+            <table className="w-full">
+              <tbody>
+                <tr className="border-b">
+                  <td className="py-2 font-semibold text-gray-800 flex items-center">
+                    <FaCalendarAlt className="inline mr-2" />
+                    First Air Date:
+                  </td>
+                  <td className="py-2 text-gray-700">
+                    {tvShow.first_air_date}
+                  </td>
+                </tr>
+                <tr className="border-b">
+                  <td className="py-2 font-semibold text-gray-800 flex items-center">
+                    <FaCalendarAlt className="inline mr-2" />
+                    Last Air Date:
+                  </td>
+                  <td className="py-2 text-gray-700">{tvShow.last_air_date}</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="py-2 font-semibold text-gray-800 flex items-center">
+                    <FaLanguage className="inline mr-2" />
+                    Original Language:
+                  </td>
+                  <td className="py-2 text-gray-700">
+                    {tvShow.original_language}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-semibold text-gray-800 flex items-center">
+                    <FaStar className="inline mr-2" />
+                    Popularity:
+                  </td>
+                  <td className="py-2 text-gray-700">{tvShow.popularity}</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-semibold text-gray-800 flex items-center">
+                    <FaStar className="inline mr-2" />
+                    Vote:
+                  </td>
+                  <td className="py-2 text-gray-700">{tvShow.vote_average}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
