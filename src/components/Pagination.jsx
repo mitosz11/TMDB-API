@@ -34,16 +34,16 @@ export default function Pagination({
   }
 
   return (
-    <div className="flex justify-center my-3 space-x-1">
+    <div className="flex justify-center my-3 py-6 gap-3">
       <button
-        className="px-2 py-1 border rounded-md hover:bg-gray-200 disabled:opacity-50"
+        className="px-2 py-1 rounded-md hover:bg-gray-200 disabled:opacity-50"
         onClick={() => setCurrentPage(1)}
         disabled={currentPage === 1}
       >
         <FaAngleDoubleLeft />
       </button>
       <button
-        className="px-2 py-1 border rounded-md hover:bg-gray-200 disabled:opacity-50"
+        className="px-2 py-1 rounded-md hover:bg-gray-200 disabled:opacity-50"
         onClick={() => setCurrentPage(currentPage === 1 ? 1 : currentPage - 1)}
         disabled={currentPage === 1}
       >
@@ -53,7 +53,7 @@ export default function Pagination({
         <button
           key={page}
           onClick={() => setCurrentPage(page)}
-          className={`px-2 py-1 border rounded-md hover:bg-gray-200 ${
+          className={`px-2 py-1 rounded-md hover:bg-gray-200 ${
             page === currentPage ? "bg-blue-500 text-white" : ""
           }`}
         >
@@ -61,7 +61,7 @@ export default function Pagination({
         </button>
       ))}
       <button
-        className="px-2 py-1 border rounded-md hover:bg-gray-200 disabled:opacity-50"
+        className="px-2 py-1 rounded-md hover:bg-gray-200 disabled:opacity-50"
         onClick={() =>
           setCurrentPage(
             currentPage === totalPages ? totalPages : currentPage + 1
@@ -72,7 +72,7 @@ export default function Pagination({
         <FaAngleRight />
       </button>
       <button
-        className="px-2 py-1 border rounded-md hover:bg-gray-200 disabled:opacity-50"
+        className="px-2 py-1 rounded-md hover:bg-gray-200 disabled:opacity-50"
         onClick={() => setCurrentPage(totalPages)}
         disabled={currentPage === totalPages}
       >

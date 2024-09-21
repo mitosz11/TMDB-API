@@ -55,7 +55,7 @@ export default function Movies() {
             </div>
           ))}
       </div>
-      <Pagination
+      <Pagination 
         setCurrentPage={setCurrentPage}
         totalPages={500}
         currentPage={currentPage}
