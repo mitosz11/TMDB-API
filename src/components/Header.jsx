@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaFilm, FaUsers, FaTv } from "react-icons/fa"; // Importálj ikonokat
+import { FaFilm, FaUsers, FaTv } from "react-icons/fa";
 
 export default function Header() {
   return (
