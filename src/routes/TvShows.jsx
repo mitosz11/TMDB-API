@@ -13,7 +13,7 @@ export default function TvShows() {
 
   return (
     <>
-      <h1 className="text-center">TV Shows</h1>
+      <h1 className="text-center text-3xl uppercase py-4">TV Shows</h1>
       <Pagination
         setCurrentPage={setCurrentPage}
         totalPages={500}
@@ -24,7 +24,7 @@ export default function TvShows() {
           tvShows.results.map((tvShow) => (
             <div
               key={tvShow.id}
-              className="bg-white shadow-md rounded-lg overflow-hidden w-64"
+              className="bg-white shadow-md rounded-lg overflow-hidden w-64 transition-transform duration-300 hover:scale-105"
             >
               <Link to={`/tvshows/show/${tvShow.id}`}>
                 <img

@@ -13,7 +13,7 @@ export default function People() {
 
   return (
     <>
-      <h1 className="text-center">Movie Stars</h1>
+      <h1 className="text-center text-3xl uppercase py-4">Movie Stars</h1>
       <Pagination
         setCurrentPage={setCurrentPage}
         totalPages={500}
@@ -24,7 +24,7 @@ export default function People() {
           people.results.map((person) => (
             <div
               key={person.id}
-              className="bg-white shadow-md rounded-lg overflow-hidden w-64"
+              className="bg-white shadow-md rounded-lg overflow-hidden w-64 transition-transform duration-300 hover:scale-105"
             >
               <Link to={`/people/${person.id}`}>
                 <img
