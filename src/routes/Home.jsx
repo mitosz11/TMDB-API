@@ -4,8 +4,9 @@ import { FaFilm, FaUsers, FaTv } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <div className="flex gap-8 justify-center items-center p-5 h-screen">
-      <div className="w-72 shadow-lg rounded-lg flex flex-col">
+    <div className="flex flex-col lg:flex-row gap-8 justify-center items-center p-5 min-h-screen">
+      {/* Movies Card */}
+      <div className="w-full sm:w-72 shadow-lg rounded-lg flex flex-col">
         <img
           src="https://image.tmdb.org/t/p/w500/izGX7npHEopDQvngYcxMJEfcFbj.jpg"
           alt="Movies"
@@ -25,7 +26,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-72 shadow-lg rounded-lg flex flex-col">
+      {/* People Card */}
+      <div className="w-full sm:w-72 shadow-lg rounded-lg flex flex-col">
         <img
           src="https://image.tmdb.org/t/p/w500/lldeQ91GwIVff43JBrpdbAAeYWj.jpg"
           alt="People"
@@ -45,7 +47,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-72 shadow-lg rounded-lg flex flex-col">
+      {/* TV Shows Card */}
+      <div className="w-full sm:w-72 shadow-lg rounded-lg flex flex-col">
         <img
           src="https://image.tmdb.org/t/p/w500//ywbacot78IuNhGW4uVZPxxxVTkm.jpg"
           alt="TV Shows"
