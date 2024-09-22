@@ -1,24 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import getAllPeople from "../services/getAllPeople";
+import getAllPeople, { searchPeople } from "../services/getAllPeople";
 import Pagination from "../components/Pagination";
 
 export default function People() {
   const [people, setPeople] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
-    getAllPeople(currentPage).then((data) => setPeople(data));
-  }, [currentPage]);
+    if (isSearching && searchQuery) {
+      searchPeople(searchQuery, currentPage).then((data) => setPeople(data));
+    } else {
+      getAllPeople(currentPage).then((data) => setPeople(data));
+    }
+  }, [currentPage, searchQuery, isSearching]);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    setIsSearching(e.target.value.length > 0);
+    setCurrentPage(1);
+  };
 
   return (
     <>
       <h1 className="text-center text-3xl uppercase py-4">Movie Stars</h1>
+
+      <div className="flex justify-center py-4">
+        <input
+          type="text"
+          placeholder="Search for a person..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="p-2 border rounded-lg w-80"
+        />
+      </div>
+
       <Pagination
         setCurrentPage={setCurrentPage}
-        totalPages={500}
+        totalPages={people.total_pages || 500}
         currentPage={currentPage}
       />
+
       <div className="flex justify-center gap-4 flex-wrap mx-4 my-8">
         {people.results &&
           people.results.map((person) => (
@@ -41,9 +65,10 @@ export default function People() {
             </div>
           ))}
       </div>
+
       <Pagination
         setCurrentPage={setCurrentPage}
-        totalPages={500}
+        totalPages={people.total_pages || 500}
         currentPage={currentPage}
       />
     </>

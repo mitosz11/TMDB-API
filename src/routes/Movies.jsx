@@ -1,25 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import getAllMovies from "../services/getAllMovies";
+import getAllMovies, { searchMovies } from "../services/getAllMovies";
 import Pagination from "../components/Pagination";
 import genreNameArray from "../utils/genreNameArray";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
-    getAllMovies(currentPage).then((data) => setMovies(data));
-  }, [currentPage]);
+    if (isSearching && searchQuery) {
+      searchMovies(searchQuery, currentPage).then((data) => setMovies(data));
+    } else {
+      getAllMovies(currentPage).then((data) => setMovies(data));
+    }
+  }, [currentPage, searchQuery, isSearching]);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    setIsSearching(e.target.value.length > 0);
+    setCurrentPage(1);
+  };
 
   return (
     <>
       <h1 className="text-center text-3xl uppercase py-4">Trending Movies</h1>
+      <div className="flex justify-center py-4">
+        <input
+          type="text"
+          placeholder="Search for a movie..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="p-2 border rounded-lg w-80"
+        />
+      </div>
+
       <Pagination
         setCurrentPage={setCurrentPage}
-        totalPages={500}
+        totalPages={movies.total_pages || 500}
         currentPage={currentPage}
       />
+
       <div className="flex justify-center gap-4 flex-wrap mx-4 my-8">
         {movies.results &&
           movies.results.map((movie) => (
@@ -55,9 +78,10 @@ export default function Movies() {
             </div>
           ))}
       </div>
-      <Pagination 
+
+      <Pagination
         setCurrentPage={setCurrentPage}
-        totalPages={500}
+        totalPages={movies.total_pages || 500}
         currentPage={currentPage}
       />
     </>
