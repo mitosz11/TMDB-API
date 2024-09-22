@@ -62,12 +62,11 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Mobil nézet menü */}
         <div
-          ref={menuRef} // Ref hozzárendelése a mobil menühöz
+          ref={menuRef}
           className={`${
             menuOpen ? "block" : "hidden"
-          } md:hidden absolute top-16 left-0 w-full bg-gray-800 text-white px-4`}
+          } md:hidden absolute top-20 left-0 w-full bg-gray-800 text-white px-4`}
         >
           <Link
             to="/movies"
